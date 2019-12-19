@@ -1,0 +1,76 @@
+{
+    "name": "The TVDB",
+    "description": "<p>TheTVDB.com is a community driven database of television shows. All content and images on the site have been contributed by the site's users; the site uses moderated editing to maintain its own standards. The database schema and website are open source under the GNU General Public License.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/thetvdb.jpeg",
+    "tags": [
+        "general data",
+        "have api",
+        "have swagger",
+        "televisions"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/the-tvdb\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "The TVDB API v2",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/thetvdb.jpeg",
+            "humanURL": "http:\/\/thetvdb.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/the-tvdb-api-v2.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/the-tvdb-api-v2-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/the-tvdb-api-v2-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "TheTVDB API v2",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/thetvdb.jpeg",
+            "humanURL": "http:\/\/thetvdb.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/thetvdb-api-v2.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/thetvdb-api-v2-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/thetvdb-api-v2-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Documentation",
+            "url": "https:\/\/api.thetvdb.com\/swagger"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/28520-2019-09-04-03-41-13.json"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/thetvdb.com"
+        }
+    ]
+}
