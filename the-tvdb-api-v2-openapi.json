@@ -1,0 +1,1053 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "2.1.2",
+        "title": "The TVDB API v2",
+        "description": "API v2 targets v1 functionality with a few minor additions. The API is accessible via https:\/\/api.thetvdb.com and provides the following REST endpoints in JSON format.\n\n\nHow to use this API documentation\n----------------\n\n\nYou may browse the API routes without authentication, but if you wish to send requests to the API and see response data, then you must authenticate.\n1. Obtain a JWT token by `POST`ing  to the `\/login` route in the `Authentication` section with your API key and credentials.\n1. Paste the JWT token from the response into the \"JWT Token\" field at the top of the page and click the 'Add Token' button.\n\n\nYou will now be able to use the remaining routes to send requests to the API and get a response.\n\n\nLanguage Selection\n----------------\n\n\nLanguage selection is done via the `Accept-Language` header. At the moment, you may only pass one language abbreviation in the header at a time. Valid language abbreviations can be found at the `\/languages` route..\n\n\nAuthentication\n-------",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi-dev.thetvdb.com\/"
+    ],
+    "paths": {
+        "\/episodes\/{id}": {
+            "get": {
+                "summary": "Get Episodes",
+                "description": "Returns the full information for a given episode id. __Deprecation Warning:__ The _director_ key will be deprecated in favor of the new _directors_ key in a future release.",
+                "operationId": "EpisodesIdGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/languages": {
+            "get": {
+                "summary": "Get Languages",
+                "description": "All available languages. These language abbreviations can be used in the `Accept-Language` header for routes that return translation records.",
+                "operationId": "LanguagesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/languages\/{id}": {
+            "get": {
+                "summary": "Get Languages",
+                "description": "Information about a particular language, given the language ID.",
+                "operationId": "LanguagesIdGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/login": {
+            "post": {
+                "summary": "Post Login",
+                "description": "Returns a session token to be included in the rest of the requests. Note that API key authentication is required for all subsequent requests and user auth is required for routes in the `User` section",
+                "operationId": "LoginPost",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "Authentication string",
+                        "in": "body",
+                        "description": "JSON string containing your authentication details."
+                    }
+                ]
+            }
+        },
+        "\/refresh_token": {
+            "get": {
+                "summary": "Get Refresh Token",
+                "description": "Refreshes your current, valid JWT token and returns a new token. Hit this route so that you do not have to post to `\/login` with your API key and credentials once you have already been authenticated.",
+                "operationId": "RefreshTokenGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/search\/series": {
+            "get": {
+                "summary": "Get Search Series",
+                "description": "Allows the user to search for a series based on the following parameters.",
+                "operationId": "SearchSeriesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/search\/series\/params": {
+            "get": {
+                "summary": "Get Search Series Params",
+                "description": "Returns an array of parameters to query by in the `\/search\/series` route.",
+                "operationId": "SearchSeriesParamsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}": {
+            "get": {
+                "summary": "Get Series",
+                "description": "Returns a series records that contains all information known about a particular series id.",
+                "operationId": "SeriesIdGet",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "head": {
+                "summary": "Head Series",
+                "description": "Returns header information only about the given series ID.",
+                "operationId": "SeriesIdHead",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/actors": {
+            "get": {
+                "summary": "Get Series Actors",
+                "description": "Returns actors for the given series id",
+                "operationId": "SeriesIdActorsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/episodes": {
+            "get": {
+                "summary": "Get Series Episodes",
+                "description": "All episodes for a given series. Paginated with 100 results per page.",
+                "operationId": "SeriesIdEpisodesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/episodes\/query": {
+            "get": {
+                "summary": "Get Series Episodes Query",
+                "description": "This route allows the user to query against episodes for the given series. The response is a paginated array of episode records that have been filtered down to basic information.",
+                "operationId": "SeriesIdEpisodesQueryGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/episodes\/query\/params": {
+            "get": {
+                "summary": "Get Series Episodes Query Params",
+                "description": "Returns the allowed query keys for the `\/series\/{id}\/episodes\/query` route",
+                "operationId": "SeriesIdEpisodesQueryParamsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/episodes\/summary": {
+            "get": {
+                "summary": "Get Series Episodes Summary",
+                "description": "Returns a summary of the episodes and seasons available for the series.\n\n__Note__: Season \"0\" is for all episodes that are considered to be specials.",
+                "operationId": "SeriesIdEpisodesSummaryGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/filter": {
+            "get": {
+                "summary": "Get Series Filter",
+                "description": "Returns a series records, filtered by the supplied comma-separated list of keys. Query keys can be found at the `\/series\/{id}\/filter\/params` route.",
+                "operationId": "SeriesIdFilterGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/filter\/params": {
+            "get": {
+                "summary": "Get Series Filter Params",
+                "description": "Returns the list of keys available for the `\/series\/{id}\/filter` route",
+                "operationId": "SeriesIdFilterParamsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/images": {
+            "get": {
+                "summary": "Get Series Images",
+                "description": "Returns a summary of the images for a particular series",
+                "operationId": "SeriesIdImagesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/images\/query": {
+            "get": {
+                "summary": "Get Series Images Query",
+                "description": "Query images for the given series ID.",
+                "operationId": "SeriesIdImagesQueryGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/series\/{id}\/images\/query\/params": {
+            "get": {
+                "summary": "Get Series Images Query Params",
+                "description": "Returns the allowed query keys for the `\/series\/{id}\/images\/query` route. Contains a parameter record for each unique `keyType`, listing values that will return results.",
+                "operationId": "SeriesIdImagesQueryParamsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/updated\/query": {
+            "get": {
+                "summary": "Get Updated Query",
+                "description": "Returns an array of series that have changed in a maximum of one week blocks since the provided `fromTime`.\n\n\nThe user may specify a `toTime` to grab results for less than a week. Any timespan larger than a week will be reduced down to one week automatically.",
+                "operationId": "UpdatedQueryGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/updated\/query\/params": {
+            "get": {
+                "summary": "Get Updated Query Params",
+                "description": "Returns an array of valid query keys for the `\/updated\/query\/params` route.",
+                "operationId": "UpdatedQueryParamsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user": {
+            "get": {
+                "summary": "Get User",
+                "description": "Returns basic information about the currently authenticated user.",
+                "operationId": "UserGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/favorites": {
+            "get": {
+                "summary": "Get User Favorites",
+                "description": "Returns an array of favorite series for a given user, will be a blank array if no favorites exist.",
+                "operationId": "UserFavoritesGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/favorites\/{id}": {
+            "delete": {
+                "summary": "Delete User Favorites",
+                "description": "Deletes the given series ID from the user???s favorite???s list and returns the updated list.",
+                "operationId": "UserFavoritesIdDelete",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "put": {
+                "summary": "Put User Favorites",
+                "description": "Adds the supplied series ID to the user???s favorite???s list and returns the updated list.",
+                "operationId": "UserFavoritesIdPut",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/ratings": {
+            "get": {
+                "summary": "Get User Ratings",
+                "description": "Returns an array of ratings for the given user.",
+                "operationId": "UserRatingsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/ratings\/query": {
+            "get": {
+                "summary": "Get User Ratings Query",
+                "description": "Returns an array of ratings for a given user that match the query.",
+                "operationId": "UserRatingsQueryGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/ratings\/query\/params": {
+            "get": {
+                "summary": "Get User Ratings Query Params",
+                "description": "Returns a list of query params for use in the `\/user\/ratings\/query` route.",
+                "operationId": "UserRatingsQueryParamsGet",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/ratings\/{itemType}\/{itemId}": {
+            "delete": {
+                "summary": "Delete User Ratings Itemtype Itemid",
+                "description": "This route deletes a given rating of a given type.",
+                "operationId": "UserRatingsItemTypeItemIdDelete",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/user\/ratings\/{itemType}\/{itemId}\/{itemRating}": {
+            "put": {
+                "summary": "Put User Ratings Itemtype Itemid Itemrating",
+                "description": "This route updates a given rating of a given type.",
+                "operationId": "UserRatingsItemTypeItemIdItemRatingPut",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Auth": {
+                "type": "object",
+                "properties": {
+                    "apikey": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "userkey": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "BasicEpisode": {
+                "type": "object",
+                "properties": {
+                    "absoluteNumber": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airedEpisodeNumber": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airedSeason": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdEpisodeNumber": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdSeason": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "episodeName": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Conflict": {
+                "type": "object",
+                "properties": {
+                    "Error": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Episode": {
+                "type": "object",
+                "properties": {
+                    "absoluteNumber": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airedEpisodeNumber": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airedSeason": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airsAfterSeason": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airsBeforeEpisode": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airsBeforeSeason": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "director": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "directors": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdChapter": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdDiscid": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdEpisodeNumber": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdSeason": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "episodeName": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "filename": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "guestStars": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "imdbId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "lastUpdatedBy": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "productionCode": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "seriesId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "showUrl": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "siteRating": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "siteRatingCount": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "thumbAdded": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "thumbAuthor": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "thumbHeight": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "thumbWidth": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "writers": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "EpisodeDataQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "EpisodeRecordData": {
+                "type": "object"
+            },
+            "FilterKeys": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "JSONErrors": {
+                "type": "object",
+                "properties": {
+                    "invalidFilters": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "invalidLanguage": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "invalidQueryParams": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Language": {
+                "type": "object",
+                "properties": {
+                    "abbreviation": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "englishName": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "LanguageData": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Links": {
+                "type": "object",
+                "properties": {
+                    "first": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "last": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "next": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "previous": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "NotAuthorized": {
+                "type": "object",
+                "properties": {
+                    "Error": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "NotFound": {
+                "type": "object",
+                "properties": {
+                    "Error": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Series": {
+                "type": "object",
+                "properties": {
+                    "added": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airsDayOfWeek": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airsTime": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "aliases": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "banner": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "genre": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "imdbId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "network": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "networkId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "rating": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "runtime": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "seriesId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "seriesName": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "siteRating": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "siteRatingCount": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "zap2itId": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesActors": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesActorsData": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "image": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "imageAdded": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "imageAuthor": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "role": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "seriesId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "sortOrder": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesData": {
+                "type": "object"
+            },
+            "SeriesEpisodes": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesEpisodesQuery": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesEpisodesQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesEpisodesSummary": {
+                "type": "object",
+                "properties": {
+                    "airedEpisodes": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "airedSeasons": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdEpisodes": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "dvdSeasons": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesImageQueryResult": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "keyType": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "languageId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "ratingsInfo": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "resolution": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "subKey": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "thumbnail": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesImageQueryResults": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesImagesCount": {
+                "type": "object",
+                "properties": {
+                    "fanart": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "poster": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "season": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "seasonwide": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "series": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesImagesCounts": {
+                "type": "object"
+            },
+            "SeriesImagesQueryParam": {
+                "type": "object",
+                "properties": {
+                    "keyType": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "languageId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "resolution": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "subKey": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesImagesQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "SeriesSearchData": {
+                "type": "object",
+                "properties": {
+                    "aliases": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "banner": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "network": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "seriesName": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "Update": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UpdateData": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UpdateDataQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "favoritesDisplaymode": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "language": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UserData": {
+                "type": "object"
+            },
+            "UserFavorites": {
+                "type": "object",
+                "properties": {
+                    "favorites": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UserFavoritesData": {
+                "type": "object"
+            },
+            "UserRatings": {
+                "type": "object",
+                "properties": {
+                    "rating": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "ratingItemId": {
+                        "description": "",
+                        "type": "put"
+                    },
+                    "ratingType": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UserRatingsData": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UserRatingsDataNoLinks": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UserRatingsDataNoLinksEmptyArray": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            },
+            "UserRatingsQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "put"
+                    }
+                }
+            }
+        }
+    }
+}
