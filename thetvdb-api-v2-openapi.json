@@ -1,0 +1,1078 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "2.1.2",
+        "title": "TheTVDB API v2",
+        "description": "API v2 targets v1 functionality with a few minor additions. The API is accessible via https:\/\/api.thetvdb.com and provides the following REST endpoints in JSON format.\n\n\nHow to use this API documentation\n----------------\n\n\nYou may browse the API routes without authentication, but if you wish to send requests to the API and see response data, then you must authenticate.\n1. Obtain a JWT token by `POST`ing  to the `\/login` route in the `Authentication` section with your API key and credentials.\n1. Paste the JWT token from the response into the \"JWT Token\" field at the top of the page and click the 'Add Token' button.\n\n\nYou will now be able to use the remaining routes to send requests to the API and get a response.\n\n\nLanguage Selection\n----------------\n\n\nLanguage selection is done via the `Accept-Language` header. At the moment, you may only pass one language abbreviation in the header at a time. Valid language abbreviations can be found at the `\/languages` route..\n\n\nAuthentication\n-------",
+        "termsOfService": "http:\/\/exmple.com\/license\/"
+    },
+    "servers": [
+        "http:\/\/api-dev.thetvdb.com\/"
+    ],
+    "paths": {
+        "\/episodes\/{id}": {
+            "get": {
+                "summary": "",
+                "description": "Returns the full information for a given episode id. __Deprecation Warning:__ The _director_ key will be deprecated in favor of the new _directors_ key in a future release.",
+                "operationId": "EpisodesIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "No Name",
+                        "in": "query",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of query keys as strings",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/EpisodeRecordData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/languages": {
+            "get": {
+                "summary": "",
+                "description": "All available languages. These language abbreviations can be used in the `Accept-Language` header for routes that return translation records.",
+                "operationId": "LanguagesGet",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "An array of query keys as strings",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/EpisodeRecordData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/languages\/{id}": {
+            "get": {
+                "summary": "",
+                "description": "Information about a particular language, given the language ID.",
+                "operationId": "LanguagesIdGet",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "No Name",
+                        "in": "query",
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of query keys as strings",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/EpisodeRecordData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/login": {
+            "post": {
+                "summary": "",
+                "description": "Returns a session token to be included in the rest of the requests. Note that API key authentication is required for all subsequent requests and user auth is required for routes in the `User` section",
+                "operationId": "LoginPost",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Auth": {
+                "type": "object",
+                "properties": {
+                    "apikey": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "userkey": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "BasicEpisode": {
+                "type": "object",
+                "properties": {
+                    "absoluteNumber": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airedEpisodeNumber": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airedSeason": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "dvdEpisodeNumber": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "dvdSeason": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "episodeName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "language": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "language": {
+                "type": "object",
+                "properties": {
+                    "abbreviation": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "englishName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Conflict": {
+                "type": "object",
+                "properties": {
+                    "Error": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Episode": {
+                "type": "object",
+                "properties": {
+                    "absoluteNumber": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airedEpisodeNumber": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airedSeason": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airsAfterSeason": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airsBeforeEpisode": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "airsBeforeSeason": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "director": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "directors": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "dvdChapter": {
+                        "description": "",
+                        "type": "number"
+                    },
+                    "dvdDiscid": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "dvdEpisodeNumber": {
+                        "description": "",
+                        "type": "number"
+                    },
+                    "dvdSeason": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "episodeName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "filename": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "guestStars": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "imdbId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "lastUpdatedBy": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "productionCode": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "seriesId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "showUrl": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "siteRating": {
+                        "description": "",
+                        "type": "number"
+                    },
+                    "siteRatingCount": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "thumbAdded": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "thumbAuthor": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "thumbHeight": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "thumbWidth": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "writers": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "directors": {
+                "type": "array"
+            },
+            "guestStars": {
+                "type": "array"
+            },
+            "writers": {
+                "type": "array"
+            },
+            "EpisodeDataQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "data": {
+                "type": "array"
+            },
+            "EpisodeLanguageInfo": {
+                "type": "object",
+                "properties": {
+                    "episodeName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "EpisodeRecordData": {
+                "type": "object",
+                "properties": {
+                    "Episode": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "errors": {
+                "type": "object"
+            },
+            "FilterKeys": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "JSONErrors": {
+                "type": "object",
+                "properties": {
+                    "invalidFilters": {
+                        "description": "Invalid filters passed to route",
+                        "type": "array"
+                    },
+                    "invalidLanguage": {
+                        "description": "Invalid language or translation missing",
+                        "type": "string"
+                    },
+                    "invalidQueryParams": {
+                        "description": "Invalid query params passed to route",
+                        "type": "array"
+                    }
+                }
+            },
+            "invalidFilters": {
+                "type": "array"
+            },
+            "invalidQueryParams": {
+                "type": "array"
+            },
+            "LanguageData": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "Links": {
+                "type": "object",
+                "properties": {
+                    "first": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "last": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "next": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "previous": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "NotAuthorized": {
+                "type": "object",
+                "properties": {
+                    "Error": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "NotFound": {
+                "type": "object",
+                "properties": {
+                    "Error": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Series": {
+                "type": "object",
+                "properties": {
+                    "added": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "airsDayOfWeek": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "airsTime": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "aliases": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "banner": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "genre": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "imdbId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "network": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "networkId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "rating": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "runtime": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "seriesId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "seriesName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "siteRating": {
+                        "description": "",
+                        "type": "number"
+                    },
+                    "siteRatingCount": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "zap2itId": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "aliases": {
+                "type": "array"
+            },
+            "genre": {
+                "type": "array"
+            },
+            "SeriesActors": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "SeriesActorsData": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "image": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "imageAdded": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "imageAuthor": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "role": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "seriesId": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "sortOrder": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "SeriesData": {
+                "type": "object",
+                "properties": {
+                    "Series": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "SeriesEpisodes": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Links": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "links": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "SeriesEpisodesQuery": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Links": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "links": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "SeriesEpisodesQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "SeriesEpisodesSummary": {
+                "type": "object",
+                "properties": {
+                    "airedEpisodes": {
+                        "description": "Number of all aired episodes for this series",
+                        "type": "string"
+                    },
+                    "airedSeasons": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "dvdEpisodes": {
+                        "description": "Number of all dvd episodes for this series",
+                        "type": "string"
+                    },
+                    "dvdSeasons": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "airedSeasons": {
+                "type": "array"
+            },
+            "dvdSeasons": {
+                "type": "array"
+            },
+            "SeriesImageQueryResult": {
+                "type": "object",
+                "properties": {
+                    "filename": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "keyType": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "languageId": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "ratingsInfo": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "resolution": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "subKey": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "thumbnail": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "ratingsInfo": {
+                "type": "object"
+            },
+            "SeriesImageQueryResults": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "SeriesImagesCount": {
+                "type": "object",
+                "properties": {
+                    "fanart": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "poster": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "season": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "seasonwide": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "series": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "SeriesImagesCounts": {
+                "type": "object",
+                "properties": {
+                    "SeriesImagesCount": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "SeriesImagesQueryParam": {
+                "type": "object",
+                "properties": {
+                    "keyType": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "languageId": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "resolution": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "subKey": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "resolution": {
+                "type": "array"
+            },
+            "subKey": {
+                "type": "array"
+            },
+            "SeriesImagesQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "SeriesSearchResult": {
+                "type": "object",
+                "properties": {
+                    "aliases": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "banner": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "firstAired": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "network": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "overview": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "seriesName": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "SeriesSearchResults": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "Token": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Update": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "lastUpdated": {
+                        "description": "",
+                        "type": "integer"
+                    }
+                }
+            },
+            "UpdateData": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "UpdateDataQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "favoritesDisplaymode": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "language": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "UserData": {
+                "type": "object",
+                "properties": {
+                    "User": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "UserFavorites": {
+                "type": "object",
+                "properties": {
+                    "favorites": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "favorites": {
+                "type": "array"
+            },
+            "UserFavoritesData": {
+                "type": "object",
+                "properties": {
+                    "UserFavorites": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "UserRatings": {
+                "type": "object",
+                "properties": {
+                    "rating": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "ratingItemId": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "ratingType": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "UserRatingsData": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "JSONErrors": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "errors": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "Links": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "links": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "UserRatingsDataNoLinks": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "UserRatingsDataNoLinksEmptyArray": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            },
+            "UserRatingsQueryParams": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "",
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    }
+}
