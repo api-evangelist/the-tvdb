@@ -1,5 +1,5 @@
 {
-    "id": "9426a9a82d2343ec7aa4860678cdf088",
+    "id": "308d1882428b302bf60347796c1e1c86",
     "name": "TheTVDB API v2",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "980bdeb3a02d31bbab90dc43349d4fc0",
+            "id": "b78b3303bb2551036d1235c673bd4688",
             "name": "",
             "url": "http:\/\/api-dev.thetvdb.com\/\/episodes\/{id}",
             "description": "Returns the full information for a given episode id. __Deprecation Warning:__ The _director_ key will be deprecated in favor of the new _directors_ key in a future release.",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9426a9a82d2343ec7aa4860678cdf088",
+            "collectionId": "308d1882428b302bf60347796c1e1c86",
             "rawModeData": ""
         },
         {
-            "id": "6f99e76ee278592f1dcf07f1123bd0e8",
+            "id": "667041cfe19352b4c79095c880291111",
             "name": "",
             "url": "http:\/\/api-dev.thetvdb.com\/\/languages",
             "description": "All available languages. These language abbreviations can be used in the `Accept-Language` header for routes that return translation records.",
@@ -60,11 +60,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9426a9a82d2343ec7aa4860678cdf088",
+            "collectionId": "308d1882428b302bf60347796c1e1c86",
             "rawModeData": ""
         },
         {
-            "id": "5fc34654c0d0fb2916e86e71914fb9f7",
+            "id": "22747e35ffaab0127461697a0f08710d",
             "name": "",
             "url": "http:\/\/api-dev.thetvdb.com\/\/languages\/{id}",
             "description": "Information about a particular language, given the language ID.",
@@ -91,11 +91,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9426a9a82d2343ec7aa4860678cdf088",
+            "collectionId": "308d1882428b302bf60347796c1e1c86",
             "rawModeData": ""
         },
         {
-            "id": "1ae5add961500ea0568c39b8f72e531d",
+            "id": "92ea31dc5a7bd3560b99651d125c9c73",
             "name": "",
             "url": "http:\/\/api-dev.thetvdb.com\/\/login",
             "description": "Returns a session token to be included in the rest of the requests. Note that API key authentication is required for all subsequent requests and user auth is required for routes in the `User` section",
@@ -114,7 +114,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9426a9a82d2343ec7aa4860678cdf088",
+            "collectionId": "308d1882428b302bf60347796c1e1c86",
             "rawModeData": ""
         }
     ]
